@@ -1,0 +1,95 @@
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="/assets/css/semantic.css"/>
+</head>
+<body>
+ <div class="ui raised segment">
+   <h3 class="ui inverted basic block header">Fitbit Dashboard</h3>
+ </div>
+    <div class="ui two column grid basic segment">
+     <div class="center aligned column">
+        <div class="ui horizontal statistics">
+            <div class="statistic">
+                <div class="value">
+                    <i class="trophy icon"></i>
+                    {{#report}}
+                        <span id="winner-total" style="visibility: hidden">{{winnerSteps}}</span>
+                    {{/report}}
+                </div>
+                <div class="label">
+                    Steps
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="ui vertical divider"> Versus </div>
+     <div class="center aligned column">
+      <div class="ui horizontal statistics">
+          <div class="statistic">
+              <div class="value">
+                  <i class="thumbs outline down icon"></i>
+                  {{#report}}
+                        <span id="loser-total" style="visibility: hidden">{{loserSteps}}</span>
+                  {{/report}}
+              </div>
+              <div class="label">
+                  Steps
+              </div>
+          </div>
+      </div>
+     </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui grid">
+    <div class="row">
+        <div class="center aligned sixteen wide column">
+            <div class="ui statistic">
+                <div class="value">
+                    <span id="countdown">8</span>
+                </div>
+                <div id="message-label" class="label">
+                    Winner and loser will be revealed below...
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui grid">
+     <div class="row">
+
+            <div class="center aligned eight wide column">
+                <div id="winner-image" class="ui rotate left reveal">
+                    <div class="visible content">
+                        <img src="/assets/images/wireframe/white-image.png" class="ui medium bordered circular image">
+                    </div>
+                    <div class="hidden content">
+                        <img src="http://www.gravatar.com/avatar/{{#report}}{{winnerGravatar}}{{/report}}?s=400" class="ui medium bordered circular image">
+                    </div>
+                </div>
+            </div>
+            <div class="center aligned eight wide column">
+                 <div id="loser-image" class="ui rotate right reveal">
+                     <div  class="visible content">
+                         <img src="/assets/images/wireframe/white-image.png" class="ui small bordered circular image">
+                     </div>
+                     <div class="hidden content">
+                         {{#report}}
+                         <img src="http://www.gravatar.com/avatar/{{loserGravatar}}?s=200" class="ui small bordered circular image">
+                         {{/report}}
+                     </div>
+                 </div>
+             </div>
+
+     </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="footer">
+     <p>&copy; mcveigh fitbit dashboard</p>
+    </div>
+ <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+ <script src="/assets/js/semantic.js" type="text/javascript"></script>
+ <script src="/assets/js/dashboard.js" type="text/javascript"></script>
+</body>
+</html>
