@@ -8,14 +8,12 @@ class DashboardDao {
 
   implicit val connection = Neo4jREST("localhost", 7474, "/db/data/")
 
-  def getDailyReport: Report = {
+  def getReport(date: String = DateTime.yesterday.toString("dd-MM-YYYY")): Report = {
 
-    val yesterday = DateTime.yesterday.toString("dd-MM-YYYY")
     val query = "MATCH (mbm)-[:RIVAL]-(mmv) " +
-                s"MATCH (mbm)-[:COMPLETED]-(mbmLatestActivity:Activity {date:'${yesterday}'}),(mmv)-[:COMPLETED]-(mmvLatestActivity:Activity {date:'${yesterday}'}) " +
+                s"MATCH (mbm)-[:COMPLETED]-(mbmLatestActivity:Activity {date:'${date}'}),(mmv)-[:COMPLETED]-(mmvLatestActivity:Activity {date:'${date}'}) " +
                 "WHERE mbm.code = 'mbm' " +
                 "RETURN mbm.email as mbmEmail, mbmLatestActivity.steps as mbmSteps, mmv.email as mmvEmail, mmvLatestActivity.steps as mmvSteps"
-
 
     val results = Cypher(query)().collect {
       case CypherRow(mbmEmail: String, mbmSteps: String, mmvEmail: String, mmvSteps: String) => {

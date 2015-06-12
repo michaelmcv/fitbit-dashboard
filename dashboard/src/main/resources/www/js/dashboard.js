@@ -1,7 +1,31 @@
 // A $( document ).ready() block.
 $( document ).ready(function() {
-    revealWinner()
+    poulateDate()
+
+    $( "#forDate" ).change(function() {
+        $( "#dateSelectionForm" ).submit()
+    });
+
+    //run the countdown if we are not on the error page
+    if( !$("#no-data-error").length ) {
+        revealWinner()
+    }
 });
+
+function poulateDate() {
+    console.log("calling the populate date")
+    var selectedDate = getParameterByName("forDate")
+    console.log("selectedDate: " + selectedDate)
+    $("#forDate").val(selectedDate);
+    console.log("done")
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 function revealWinner() {
     console.log("calling the reveal function")
