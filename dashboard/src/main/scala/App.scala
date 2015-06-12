@@ -57,7 +57,8 @@ object Server {
 
     System.setProperty("org.eclipse.jetty.util.log.DEBUG","true")
 
-    val http = unfiltered.jetty.Server.local(8000)
+    //bind to all interfaces on host
+    val http = unfiltered.jetty.Server.http(8000,"0.0.0.0")
     http.context("/assets") { _.resources(
       new java.net.URL(getClass().getResource("/www/css"), ".")
     ) }.plan(new App).requestLogging("./dashboard/access.log").start()
