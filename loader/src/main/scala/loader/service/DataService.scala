@@ -14,16 +14,16 @@ object DataService {
 
   def loadUsers: String = {
 
-    val query =  "MERGE (mbm:User {code: 'mbm', firstName: 'Mary', lastName: 'Mullan', email:'b.mullan@kainos.com'}) " +
-                 "MERGE (mmv:User {code: 'mmv', firstName: 'Michael', lastName: 'McVeigh', email:'michaelmc_veigh@hotmail.com'})"
+    val query =  "MERGE (user1:User {code: 'user1', firstName: 'User', lastName: 'One', email:'user-one@example.com'}) " +
+                 "MERGE (user2:User {code: 'user2', firstName: 'User', lastName: 'Two', email:'user-one@example.com'})"
 
     executeCypher(query, "")
   }
 
   def makeRivals: String = {
 
-    val query =  "MATCH (mmv: User {code: 'mmv'}), (mbm: User {code: 'mbm'}) " +
-                 "MERGE (mbm)-[:RIVAL]->(mmv)"
+    val query =  "MATCH (user1: User {code: 'user2'}), (user1: User {code: 'user1'}) " +
+                 "MERGE (user1)-[:RIVAL]->(user1)"
 
     executeCypher(query, "")
   }
