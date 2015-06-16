@@ -1,25 +1,24 @@
-# fitbit-dashboard
+# Fitbit-dashboard
 
 Simple dashboard to display a personalised summary of fitbit activity.
 Compares 2 related users data, revealing who achieved the most steps from the previous days activity.
 
 
-### design
+### Design
 
 ![Design](design.jpg)
-This is an early version, to be replaced with a more detailed one.
 
 ### Colophon
 
 - sbt (build)
 - scala (language)
 - neo4j (db)
-- Anorm Cypher (orm ... ish)
+- Anorm Cypher (orm-ish)
 - unfiltered (hosting framework)
-- scalate (web templating)
+- scalate (templating)
 - semantic-ui (styling)
 
-### breakdown
+### Breakdown
 
 Consists of 3 sub projects
 
@@ -30,11 +29,11 @@ Consists of 3 sub projects
 See the readme in each sub project for more detail on them.
 Also there are some additionals bash scripts to tie it together, I use these on the deployment target.
 
-### why
+### Why
 
 I'm jumping through more hoops here than I really need, only reason for this was to give me something  a bit more meaty to get my teeth into, for experimenting with some of scala's functional programming aspects. Also an excuse to play around with neo4j and cypher.
 
-### usage
+### Usage
 
 if there is really anyone out there that would want to run this themselves, you'll need a few pre-requistes:
 
@@ -45,7 +44,7 @@ if there is really anyone out there that would want to run this themselves, you'
 
 When all those prereqs sorted, its a case of running the scripts in following order
 
-    ./scripts/runExtractor.sh
+    ./scripts/runExtraction.sh
     ./scripts/runLoader.sh    
     ./scripts/runDashboard.sh
 
